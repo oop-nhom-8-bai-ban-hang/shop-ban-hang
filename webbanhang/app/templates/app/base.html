@@ -28,12 +28,12 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        
+        <!--header-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src=" {% static 'app/images/Neel.png' %}" width="50" height= "50" />      
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,9 +41,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,11 +91,11 @@
 </nav>
 
     <!--main /body-->
-         {% block banner_slider %}{% endblock banner_slider %}
-         {%block main-content %}{% endblock main-content %}
+    {%block banner_slider%}{%endblock banner_slider%}
+    {%block main-content %}{% endblock  %}
     <!--footer-->
     <footer class="container--fluid bg-success text-center fixed-bottom p-2 mt-5">
         copyright 2022
-    <footer>
+    </footer>
     </body>
 </html>
