@@ -82,28 +82,24 @@
           <a class="nav-link" href="#">Liên hệ</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form class="d-flex" role="search" method = POST action = "{% url "search" %}" >
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = "searched"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div> 
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          user1
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
-          <li><a class="dropdown-item" href="{% url 'cart' %}">Đơn hàng</a></li>
-          <li><a class="dropdown-item" href="#">Thoát</a></li>
-        </ul>
-      </li>
+      
+      <div class="form-inline my-2 my-lg-0">
+        <span> hello! {{request.user}}</span>
+        <span><a href= "{% url 'logout' %} "> Logout </a></span>
+      </div>
       
       <li class="nav-item">
-        <a class="nav-link" href="#">Đăng nhập</a>
+        <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Đăng ký</a>
+        <a class="nav-link" href= "{% url 'register' %}" >Đăng ký</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
@@ -119,6 +115,7 @@
     <!-- Giao diện cart -->
     {%block cart_content %}{% endblock cart_content %}
     {% block content_checkout %}{% endblock content_checkout %}
+    {% block register %}{% endblock register %}
 
     <!--footer-->
     <footer class="container--fluid bg-success text-center fixed-bottom p-2 mt-5">
