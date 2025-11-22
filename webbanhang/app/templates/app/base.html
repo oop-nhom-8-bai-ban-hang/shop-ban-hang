@@ -89,26 +89,44 @@
       </form>
     </div> 
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      
-      <div class="form-inline my-2 my-lg-0">
-        <span> hello! {{request.user}}</span>
+      <div class="form-inline my-2 my-lg-0" style ='visibility: {{user_login}}'>
+        <span> Hello! {{request.user}} </span>
         <span><a href= "{% url 'logout' %} "> Logout </a></span>
       </div>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>
+    </ul>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row" style="visibility: {{user_not_login}}">
+     <li class="nav-item me-3"> <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href= "{% url 'register' %}" >Đăng ký</a>
+        <a class="nav-link" href="{% url 'register' %}">Đăng ký</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-      <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.png' %}"></a>
-      <p id="cart-total">{{cartItems}}</p>
+      <a href="{% url 'cart' %}" style="position: relative; display: inline-block; text-decoration: none;">
+        
+        <img id="cart-icon" src="{% static 'images/cart.png' %}" style="width: 30px; height: auto;">
+        
+        <span id="cart-total" style="
+            position: absolute;   /* Cho phép nằm đè lên ảnh */
+            top: -5px;            /* Căn lên trên so với mép ảnh */
+            right: -8px;          /* Căn sang phải so với mép ảnh */
+            width: 20px;          /* Chiều rộng vòng tròn */
+            height: 20px;         /* Chiều cao vòng tròn */
+            background-color: red;
+            color: white;
+            border-radius: 50%;   /* Bo tròn */
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;        /* Căn số 0 ra giữa vòng tròn */
+            justify-content: center;
+            align-items: center;
+        ">
+            {{cartItems}}
+        </span>
+      </a>
     </div>
   </div>
 </nav>
-
     <!--main /body-->
     {%block banner_slider%}{%endblock banner_slider%}
     {%block main-content %}{% endblock main-content %}

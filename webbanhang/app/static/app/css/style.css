@@ -90,3 +90,33 @@
 .goodnesssec a{
    text-decoration: none;
 }
+/* 1. Tạo mốc định vị cho thẻ a bao quanh */
+.cart-position {
+    position: relative; /* Để các phần tử con dùng absolute sẽ căn theo thằng này */
+    display: inline-block;
+}
+
+/* 2. Định dạng cho icon giỏ hàng */
+#cart-icon {
+    width: 25px; /* Chỉnh kích thước icon vừa phải */
+    height: 25px;
+    display: inline-block;
+}
+
+/* 3. Định dạng cho số lượng (Cái vòng tròn đỏ) */
+#cart-total {
+    position: absolute; /* Cho phép bay lơ lửng đè lên ảnh */
+    top: -5px;          /* Căn lên trên cùng */
+    right: -10px;       /* Căn sang phải */
+    
+    /* Làm đẹp vòng tròn đỏ */
+    background-color: red;
+    color: white;
+    border-radius: 50%; /* Bo tròn thành hình tròn */
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px; /* Căn giữa số theo chiều dọc */
+    font-weight: bold;
+}
