@@ -69,10 +69,9 @@
             Sản phẩm
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Sữa</a></li>
-            <li><a class="dropdown-item" href="#">Sữa</a></li>
-            <li><a class="dropdown-item" href="#">Sữa</a></li>
-            <li><a class="dropdown-item" href="#">Sữa</a></li>
+            {% for category in categories %}
+            <li><a class="dropdown-item" href="{% url 'category' %}?category={{category.slug}}">{{category.name}}</a></li>
+            {% endfor %}
           </ul>
         </li>
         <li class="nav-item">

@@ -6,6 +6,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 # Create your views here.
+def category(request):
+    if request.user.is_authenticated:
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        user_not_login = "show"
+        user_login = "hidden"
+    categories = Category.objects.filter(is_sub = False)
+    active_category = request.GET.get('category',' ')
+    if active_category:
+        products = Product.objects.filter(category__slug = active_category)
+    context = {'categories': categories, 'products': products, 'active_category': active_category, 'user_not_login':user_not_login, 'user_login':user_login}
+    return render(request, 'app/category.html', context)
 def search(request):
     if request.method == "POST":
         searched = request.POST["searched"]
@@ -23,8 +36,9 @@ def search(request):
         cartItems = order['get_cart_items'] 
         user_not_login = "show"
         user_login = "hidden"
+    categories = Category.objects.filter(is_sub = False)
     products = Product.objects.all()
-    return render(request, 'app/search.html', {"searched":searched, "keys":keys, 'products': products, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login})
+    return render(request, 'app/search.html', {"searched":searched, "keys":keys, 'products': products, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories})
 def register(request):
     form = CreateUserForm()
     user_not_login = "show"
@@ -34,7 +48,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-    context = {'form':form, 'user_not_login':user_not_login, 'user_login':user_login}
+    categories = Category.objects.filter(is_sub = False)
+    context = {'form':form, 'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories}
     return render(request, 'app/register.html', context)
 def loginPage(request):
     user_not_login = "show"
@@ -49,7 +64,8 @@ def loginPage(request):
             login(request,user)
             return redirect('home')
         else: messages.info(request,'user or password not correct!')
-    context = {'user_not_login':user_not_login, 'user_login':user_login}
+    categories = Category.objects.filter(is_sub = False)
+    context = {'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories}
     return render(request, 'app/login.html', context)
 def logoutPage(request):
     logout(request)
@@ -69,8 +85,9 @@ def home(request):
         cartItems = order['get_cart_items'] 
         user_not_login = "show"
         user_login = "hidden"
+    categories = Category.objects.filter(is_sub = False)
     products = Product.objects.all()
-    context= {'products': products, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login}
+    context= {'products': products, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories}
     return render(request,'app/home.html', context) 
 def cart(request):
     if request.user.is_authenticated:
@@ -86,7 +103,8 @@ def cart(request):
         cartItems = order['get_cart_items'] 
         user_not_login = "show"
         user_login = "hidden"
-    context= {'items':items, 'order':order, 'cartItems':cartItems,'user_not_login':user_not_login, 'user_login':user_login}
+    categories = Category.objects.filter(is_sub = False)
+    context= {'items':items, 'order':order, 'cartItems':cartItems,'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories}
     return render(request, 'app/cart.html', context)
 def checkout(request):
     if request.user.is_authenticated:
@@ -102,7 +120,8 @@ def checkout(request):
         cartItems = order['get_cart_items'] 
         user_not_login = "show"
         user_login = "hidden"
-    context= {'items':items, 'order':order, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login}
+    categories = Category.objects.filter(is_sub = False)
+    context= {'items':items, 'order':order, 'cartItems':cartItems, 'user_not_login':user_not_login, 'user_login':user_login, 'categories': categories}
     return render(request, 'app/checkout.html', context)
 def updateItem(request):
     data = json.loads(request.body)
