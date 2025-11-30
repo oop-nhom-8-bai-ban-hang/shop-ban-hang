@@ -1,0 +1,206 @@
+/* =========================================
+   1. CẤU HÌNH CHUNG (SỬA LỖI KHUNG BỊ LỆCH)
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f6f6; /* Màu nền xám nhẹ cho web đỡ chói */
+}
+
+/* =========================================
+   2. CAROUSEL & BACKGROUND (CODE CŨ CỦA BẠN)
+   ========================================= */
+.owl-carousel .item {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    transition: transform .5s ease;
+}
+
+.owl-carousel .item:hover {
+    transform: scale(1.1);
+}
+
+.owl-next {
+    float: right;
+}
+
+.owl-prev {
+    float: left;
+}
+
+.owl-prev span, .owl-next span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* --- Các lớp màu nền Gradient --- */
+.buttermilk {
+    background-color: #fff;
+    background-image: linear-gradient(#fff7ef, #fff);
+    padding: 50px 40px;
+    border: 1px solid #efe8e1;
+    padding-bottom: 20px;
+}
+
+.smbg {
+    background-color: #fff;
+    background-image: linear-gradient(rgba(110, 69, 143, 0.1), #fff);
+}
+
+.curdbgpro {
+    background-color: #fff;
+    background-image: linear-gradient(rgba(10, 77, 123, 0.1), #fff);
+}
+
+.goodnessseccont img {
+    width: 100%;
+}
+
+.mlkpro {
+    color: #636362;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 15px;
+    width: 43%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.goodnesssec a {
+    text-decoration: none;
+}
+
+/* =========================================
+   3. ICON GIỎ HÀNG (NAVBAR)
+   ========================================= */
+.cart-position {
+    position: relative;
+    display: inline-block;
+}
+
+#cart-icon {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+#cart-total {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================
+   4. KHUNG SẢN PHẨM & ẢNH (ĐÃ SỬA LỖI MÉO ẢNH)
+   ========================================= */
+.box-element {
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+.product {
+    border-radius: 0 0 4px 4px;
+}
+
+/* Khoảng cách giữa các hàng sản phẩm */
+.col-lg-3 {
+    margin-bottom: 20px; 
+}
+
+/* QUAN TRỌNG: Cấu hình ảnh sản phẩm chuẩn Shopee (Vuông vắn, không méo) */
+/* --- CODE CHỈNH ẢNH SẢN PHẨM (VUÔNG VẮN, TỰ CẮT, KHÔNG MÉO) --- */
+
+.thumbnail {
+    width: 100% !important;          /* Chiều rộng luôn full ô */
+    height: 300px !important;        /* Chiều cao cố định (Bạn có thể sửa 300px thành số khác tùy ý) */
+    object-fit: cover !important;    /* QUAN TRỌNG: Lệnh này giúp cắt ảnh vừa khung mà không bị méo */
+    object-position: center !important; /* Lấy phần trung tâm của ảnh */
+    
+    /* Trang trí thêm (tùy chọn) */
+    border-radius: 5px 5px 0 0;      /* Bo tròn 2 góc trên */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
+}
+
+/* =========================================
+   5. LÀM ĐẸP GIÁ TIỀN (PRICE TEXT)
+   ========================================= */
+.price-text {
+    font-size: 22px !important;       /* Cỡ chữ to */
+    color: #ee4d2d !important;        /* Màu đỏ cam nổi bật */
+    font-weight: 800 !important;      /* In đậm */
+    float: right;                     /* Căn sang phải */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1); 
+    margin-top: 5px;
+}
+
+.currency-symbol {
+    font-size: 14px;
+    vertical-align: top; 
+    color: #555;       
+    margin-left: 2px;
+}
+
+/* =========================================
+   6. LÀM ĐẸP BANNER (CAROUSEL CAPTION)
+   ========================================= */
+.carousel-caption {
+    bottom: 20px !important;                
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: auto !important;                 
+    max-width: 80% !important;              
+    padding: 15px 25px !important;          
+    
+    /* Hiệu ứng kính mờ (Glassmorphism) */
+    background: rgba(25, 135, 84, 0.75) !important; /* Xanh lá mờ */
+    backdrop-filter: blur(5px) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.carousel-caption h5 {
+    font-size: 1.8rem !important;           
+    font-weight: 800 !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;   
+    letter-spacing: 1px !important;         
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6) !important;
+}
+
+.carousel-caption p {
+    font-size: 1.1rem !important;           
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+/* Hiệu ứng khi di chuột vào hộp chữ */
+.carousel-caption:hover {
+    background: rgba(25, 135, 84, 0.9) !important;
+    transform: translateX(-50%) translateY(-5px) !important;   
+    transition: all 0.3s ease !important;
+}
+
+/* Class ẩn hiện dùng cho JS */
+.hidden {
+    display: none !important;
+}
